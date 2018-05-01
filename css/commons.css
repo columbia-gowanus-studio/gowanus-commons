@@ -1,0 +1,178 @@
+.designatedfont {
+  font-family: 'Nunito Sans', sans-serif;
+  letter-spacing: 0.03em;
+}
+/* .container{
+  padding:10px;
+} */
+.bigtext {
+  font-size: 30;
+}
+.midtext {
+  font-size: 20;
+}
+.liltext{
+  font-size: 15;
+}
+.underlinelink {
+  color: black;
+}
+
+.nav-li {
+  padding:.5em;
+}
+.underlinelink:hover {
+  color: black;
+  background-color: yellow;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  z-index: -1;
+}
+
+.gsapplogo {
+  width: 100px;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+@media only screen and (max-device-width:1024px){
+ .gsapplogo {
+  width: 80px;
+  }
+  .footer{
+    position: relative;
+    height:90px;
+  }
+  .liltext{
+    font-size: 20;
+  }
+}
+/* Platform CSS starts here */
+
+.headingTitle {
+  font-size: 18px;
+  font-weight: 800;
+  vertical-align: middle;
+}
+.headingSubtitle {
+  font-size: 12px;
+  font-weight: 800;
+}
+.sectionTitle{
+  font-size: 15px;
+  font-weight: 800;
+}
+.footer-text{
+  font-size: 9px;
+}
+.entry-text{
+  font-weight: 800;
+  font-size: 14px;
+}
+.outlinebox{
+  outline: 2px solid black;
+  outline-offset: -3px;
+  padding:6px;
+
+}
+.borderbox {
+  border: 2px solid black;
+  margin: 2px;
+}
+.currentbox{
+  outline: 2px solid black;
+  outline-offset: -3px;
+  padding:6px;
+  background-color: yellow;
+}
+
+.table-text{
+  font-size: 14px;
+}
+
+.img-grid{
+  padding-top: 10px;
+}
+
+.boldlink{
+  color: black;
+}
+
+.linkfont{
+  color: black;
+  text-decoration: none;
+}
+
+.linkfont:hover{
+  color:black;
+}
+
+.linkbox{
+  outline: 2px solid black;
+  outline-offset: -3px;
+  padding:6px;
+}
+.linkbox:hover {
+  outline: 2px solid black;
+  background-color: yellow;
+  color: black;
+}
+
+.img-box{
+  padding-right:5px;
+  padding-left:5px;
+}
+
+
+/* The heart of the matter */
+/* .testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+} */
+
+/* Decorations */
+/* .col-xs-4 { color: #fff; font-size: 48px; padding-bottom: 20px; padding-top: 18px; }
+.col-xs-4:nth-child(3n+1) { background: #c69; }
+.col-xs-4:nth-child(3n+2) { background: #9c6; }
+.col-xs-4:nth-child(3n+3) { background: #69c; } */
+/*
+.live__scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.live__scroll .row{
+  display:block;
+}
+.live__scroll .live__scroll--box {
+  display: inline-block;
+  float: none;
+  padding: 15px;
+  border: 1px solid red;
+} */
+
+
+/* The heart of the matter */
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-sm-4 {
+  display: inline-block;
+  float: none;
+}
+
+/* Decorations */
+.col-sm-4 {padding-bottom: 20px; padding-top: 18px; }

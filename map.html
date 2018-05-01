@@ -1,0 +1,171 @@
+
+<html>
+<head>
+	<title>Gowanus</title>
+
+	<link rel="stylesheet"  href="css/leaflet.css"/>
+  <link rel="stylesheet"  href="css/leaflet-extras.css"/>
+	<link rel="stylesheet" href="css/commons.css"/>
+	<script src="js/leaflet.js"></script>
+
+	<script src="js/jquery-2.1.1.min.js">  </script>
+
+	<style>
+	#map{position:absolute; top:0; bottom:0; left:0; width: 100%;}
+	</style>
+
+
+</head>
+<body>
+
+	<div id="map"></div>
+	<!-- <script src="point_test.js" type="text/javascript"></script> -->
+	<script src="PointAnnotation_alt.js" type="text/javascript"></script>
+	<script>
+//initializing the map
+	var map = L.map('map').setView([40.676105,-73.989937], 14);
+
+//add background tile layers
+	L.tileLayer('http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
+		{
+			// attribution: 'Tiles from <a href="http://www.openstreetmap.org/">OSM by Stamen Design</a>',
+		maxZoom: 19,
+		minZoom: 1
+		}).addTo(map);
+//
+//
+//link to the historical map image
+	var imageUrl = 'data/Gowanus_Commons_References_150.svg';
+
+//define the area that image covers
+// var imageBounds = [[40.918, -74.272], [40.496, -73.716]];
+var imageBounds = [[40.917, -74.303], [40.496, -73.687]];
+	// var imageBounds = [[40.945, -74.259], [40.411, -73.725]];
+// add image to map
+	L.imageOverlay(imageUrl, imageBounds, {opacity: 0.8}).addTo(map);
+
+// test of dot icon
+// var dotIconorig = L.icon({
+//     iconUrl: 'img/marker-01.png',
+//     iconSize:     [10, 10], // size of the icon
+//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+// });
+// L.marker([40.678871,-73.982813], {icon: dotIconorig}).addTo(map);
+// L.marker([40.681412, -73.989229], {icon: dotIconorig}).addTo(map);
+// L.marker([40.677115, -73.992362], {icon: dotIconorig}).addTo(map);
+// L.marker([40.672492, -73.990130], {icon: dotIconorig}).addTo(map);
+// // L.marker([40.680537, -73.983187], {icon: dotIconorig}).addTo(map);
+
+// L.circleMarker([40.680537, -73.983187],{
+// 	radius: 8,
+// 	fillColor: "#ff7800",
+// 	color: "#000",
+// 	weight: 1,
+// 	opacity: 1,
+// 	fillOpacity: 0.8
+// }).addTo(map)
+
+// //load GeoJSON file containing points
+// 	$.getJSON('data/PointAnnotations.geojson',function(bldg){
+// 		L.geoJson(bldg,{
+// 			onEachFeature: point_annon
+// 	    }).addTo(map);
+// 	});
+//
+// //define popup content for point annotations
+// 	var point_annon = function onEachFeature(feature, layer) {
+// 	    if (feature.properties && feature.properties.Descr) {
+// 	    	var pointsPopup = feature.properties.Name + '<br/> <img src="'+ feature.properties.ImgURL + '" width ="300px"/> <br/>' + feature.properties.Descr;
+// 	        layer.bindPopup(pointsPopup);
+// 	    }
+// 	}
+//
+// //define popup content for point annotations
+// 	var point_annon = function onEachFeature(feature, layer) {
+// 	    if (feature.properties && feature.properties.Descr) {
+// 	    	var pointsPopup = feature.properties.Name + '<br/> <img src="'+ feature.properties.ImgURL + '" width ="300px"/> <br/>' + feature.properties.Descr;
+// 	        layer.bindPopup(pointsPopup);
+// 	    }
+// 	}
+
+function onEachFeature(feature,layer){
+	var popupContent = "<div class= 'headingTitle'>Gowanus Workshop Stories</div>" + feature.properties.popupContent;
+	layer.bindPopup(popupContent);
+}
+
+var geojsonFeature = {
+    "type": "Feature",
+    "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "'Our staff were the first responders in the buildings we manage... We had to temporarily relocate tenants from Gowanus to other properties since the electrical outage lasted more than two weeks...'"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-73.983187,40.680537]
+    }
+};
+
+var culturalStyle = {
+	radius: 7,
+	fillColor: "#ec00ec",
+	color: "#ec00ec",
+	weight: 1,
+	opacity: 1,
+	fillOpacity: 0.8,
+};
+
+L.geoJSON(geojsonFeature, {
+
+	onEachFeature: onEachFeature,
+
+	pointToLayer: function(feature, latlng) {
+		return L.circleMarker(latlng, culturalStyle);
+	}
+}).addTo(map);
+
+
+L.circleMarker([40.678871,-73.982813], culturalStyle).addTo(map);
+L.circleMarker([40.681412, -73.989229], culturalStyle).addTo(map);
+L.circleMarker([40.677115, -73.992362], culturalStyle).addTo(map);
+L.circleMarker([40.672492, -73.990130], culturalStyle).addTo(map);
+L.circleMarker([40.681945, -73.983189], culturalStyle).addTo(map);
+
+
+// L.geoJSON([pointloc], {
+// 	style: function (feature) {
+// 		return feature.properties
+// 	},
+//
+// 	// onEachFeature: onEachFeature,
+//
+// 	pointToLayer: function (feature, latlng){
+// 		return L.circleMarker(latlng, {
+// 			radius: 7,
+// 			fillColor: "#ff7800",
+// 			color: "#000",
+// 			weight: 1,
+// 			opacity: 1,
+// 			fillOpacity: 0.8
+// 		});
+// 	}
+// }).addTo(map);
+//
+// var myLines = [{
+//     "type": "LineString",
+//     "coordinates": [[-73, 40.680537], [-74, 40.680537], [-75, 40.680537]]
+// }];
+//
+// var myStyle = {
+//     "color": "#ff7800",
+//     "weight": 5,
+//     "opacity": 0.65
+// };
+//
+// L.geoJSON(myLines, {
+//     style: myStyle
+// }).addTo(map);
+
+	</script>
+</body>
+</html>
