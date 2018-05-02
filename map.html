@@ -23,7 +23,7 @@
 	<script src="PointAnnotation_alt.js" type="text/javascript"></script>
 	<script>
 //initializing the map
-	var map = L.map('map').setView([40.676105,-73.989937], 14);
+	var map = L.map('map').setView([40.679105,-73.9897], 14);
 
 //add background tile layers
 	L.tileLayer('http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
@@ -93,18 +93,53 @@ function onEachFeature(feature,layer){
 	layer.bindPopup(popupContent);
 }
 
-var geojsonFeature = {
+var geojsonFeature = [{
     "type": "Feature",
     "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
         "popupContent": "'Our staff were the first responders in the buildings we manage... We had to temporarily relocate tenants from Gowanus to other properties since the electrical outage lasted more than two weeks...'"
     },
     "geometry": {
         "type": "Point",
         "coordinates": [-73.983187,40.680537]
     }
-};
+},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "'I was an Americorps (NYC Civic Corps) member...during Hurricane Sandy. Since I lived nearby in Brooklyn, I helped clean our stewardship site that was flooded with over a foot of water. However many of my peers could not travel to their host site, so they used the opportunity to volunteer and help those affected by the hurricane - it was a large and enthusiastic disaster response workforce that became a positive outcome of not being able to attend their host sites.'"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-73.985,40.68]
+    }
+},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "'We live in an old industrial loft building one block from the canal. Our basement remained flooded for weeks, landlord didn't have the wherewithall to pump it out. We had no heat or electric until the day after Thanksgiving. Electric and gas meters were replaced in the basement, rather than raised up above flood level.'"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-73.985,40.682]
+    }
+},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "'Gowanus Studio Space ... was spared flood damage and instead became a donation drop-off location for the weeks that followed and organized a fundraiser almost immediately after the storm. We also hosted meetings for other groups of local artists to plan actions/responses. The drop-off center worked because we were able to pre-sort the donations and make sure they were useful before shipping them out to Rockaway. We could also target our requests to our audience. The fundraiser generated over $1000 in cash that went to specific individuals and groups in Rockaway that were able to use it right away (vs. the bigger organizations/operations).'"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-73.988,40.677]
+    }
+},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "'Gowanus Studio Space ... was spared flood damage and instead became a donation drop-off location for the weeks that followed and organized a fundraiser almost immediately after the storm. We also hosted meetings for other groups of local artists to plan actions/responses. The drop-off center worked because we were able to pre-sort the donations and make sure they were useful before shipping them out to Rockaway. We could also target our requests to our audience. The fundraiser generated over $1000 in cash that went to specific individuals and groups in Rockaway that were able to use it right away (vs. the bigger organizations/operations).'"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-73.991,40.678]
+    }
+},
+];
 
 var culturalStyle = {
 	radius: 7,
@@ -123,13 +158,13 @@ L.geoJSON(geojsonFeature, {
 		return L.circleMarker(latlng, culturalStyle);
 	}
 }).addTo(map);
-
-
-L.circleMarker([40.678871,-73.982813], culturalStyle).addTo(map);
-L.circleMarker([40.681412, -73.989229], culturalStyle).addTo(map);
-L.circleMarker([40.677115, -73.992362], culturalStyle).addTo(map);
-L.circleMarker([40.672492, -73.990130], culturalStyle).addTo(map);
-L.circleMarker([40.681945, -73.983189], culturalStyle).addTo(map);
+//
+//
+// L.circleMarker([40.678871,-73.982813], culturalStyle).addTo(map);
+// L.circleMarker([40.681412, -73.989229], culturalStyle).addTo(map);
+// L.circleMarker([40.677115, -73.992362], culturalStyle).addTo(map);
+// L.circleMarker([40.672492, -73.990130], culturalStyle).addTo(map);
+// L.circleMarker([40.681945, -73.983189], culturalStyle).addTo(map);
 
 
 // L.geoJSON([pointloc], {

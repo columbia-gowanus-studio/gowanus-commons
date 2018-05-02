@@ -23,7 +23,7 @@
 
 	<script>
 //initializing the map
-	var map = L.map('map').setView([40.676105,-73.989937], 14);
+	var map = L.map('map').setView([40.679105,-73.9897], 14);
 
 //add background tile layers
 	L.tileLayer('http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
@@ -32,69 +32,7 @@
 		maxZoom: 19,
 		minZoom: 1
 		}).addTo(map);
-//
-//
-// //link to the historical map image
-// 	var imageUrl = 'data/BronxMap.png';
-//
-// //define the area that image covers
-// 	var imageBounds = [[40.8846829955, -73.8978315922], [40.8290586719, -73.8201512858]];
-//
-// //add georeferenced historical map
-// 	L.imageOverlay(imageUrl, imageBounds, {opacity: 0.8}).addTo(map);
-//
-//
-// //load GeoJSON file containing roads, and style lines
-//   	$.getJSON('data/RoadLines.geojson',function(roadsData){
-// 	    L.geoJson(roadsData, {
-// 	    	color: "#ff7800",
-// 	    	weight: 3.5,
-// 	    	opacity: 0.65,
-// 	    	onEachFeature: road_annon
-// 	    }).addTo(map);
-// 	    });
-//
-// //define popup content for road annotations
-//  	var road_annon = function onEachFeature(feature, layer) {
-// 	    if (feature.properties && feature.properties.Descr) {
-// 	    	var roadsPopup = feature.properties.Descr;
-// 	        layer.bindPopup(roadsPopup);
-// 	    }
-// 	}
-//
-var dotIconorig = L.icon({
-    iconUrl: 'img/marker-02.png',
-    // shadowUrl: 'leaf-shadow.png',
 
-    iconSize:     [10, 10], // size of the icon
-    // shadowSize:   [50, 64], // size of the shadow
-    // iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-    // shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-//
-// var dotIcon = L.Icon.extend({
-//     // iconUrl: 'marker-01.png',
-//     // shadowUrl: 'leaf-shadow.png',
-//
-//     iconSize:     [1, 1], // size of the icon
-//     // shadowSize:   [50, 64], // size of the shadow
-//     // iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-//     // shadowAnchor: [4, 62],  // the same for the shadow
-//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-// });
-//
-// var dotIconM = new dotIcon({iconUrl: 'img/marker-01.png'}),
-//     dotIconY = new dotIcon({iconUrl: 'img/marker-02.png'}),
-//     dotIconK = new dotIcon({iconUrl: 'img/marker-03.png'}),
-//     dotIconC = new dotIcon({iconUrl: 'img/marker-04.png'});
-
-//
-// L.marker([40.678871,-73.982813], {icon: dotIconorig}).addTo(map);
-// L.marker([40.681412, -73.989229], {icon: dotIconorig}).addTo(map);
-// L.marker([40.677115, -73.992362], {icon: dotIconorig}).addTo(map);
-// L.marker([40.672492, -73.990130], {icon: dotIconorig}).addTo(map);
-// L.marker([40.680537, -73.983187], {icon: dotIconorig}).addTo(map);
 var culturalStyle = {
 	radius: 6,
 	fillColor: "#00aeef",
@@ -103,34 +41,79 @@ var culturalStyle = {
 	opacity: 1,
 	fillOpacity: 0.9,
 };
-L.circleMarker([40.678871,-73.982813], culturalStyle).addTo(map);
-L.circleMarker([40.681412, -73.989229], culturalStyle).addTo(map);
-L.circleMarker([40.677115, -73.992362], culturalStyle).addTo(map);
-L.circleMarker([40.672492, -73.990130], culturalStyle).addTo(map);
-L.circleMarker([40.680537, -73.983187], culturalStyle).addTo(map);
+// L.circleMarker([40.678871,-73.982813], culturalStyle).addTo(map);
+// L.circleMarker([40.681412, -73.989229], culturalStyle).addTo(map);
+// L.circleMarker([40.677115, -73.992362], culturalStyle).addTo(map);
+// L.circleMarker([40.672492, -73.990130], culturalStyle).addTo(map);
+// L.circleMarker([40.680537, -73.983187], culturalStyle).addTo(map);
 
 
 
 function onEachFeature(feature,layer){
-	var popupContent = "<p class = 'headingSubtitle'>Gowanus Expo </p><img src='img/Expo-Postcard-1.jpg' width ='300px'>Visit over 30 activity stations with environmentally-themed art, science, engineering, dance and music performances."
+	var popupContent = "<a href = '" + feature.properties.link + "'<p class = 'linkfont headingSubtitle'>" + feature.properties.name + "</br> </a>" + feature.properties.organizer + "</br>" + feature.properties.date + "<img src='img/" + feature.properties.image + "' width ='300px'>" + feature.properties.popupText
 	// + feature.properties.popupContent "</div>"+ "<div class = "entry-text">" + feature.properties.popupText + "</div>";
 	layer.bindPopup(popupContent);
 }
 
-var geojsonFeature = {
+var geojsonFeature = [{
     "type": "Feature",
     "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "Expo Gowanus",
+        "organizer": "The Gowanus Studio Space",
+				"date": "May 10, May 11",
+        "name": "Free Letterpress Workshop",
 				"popupText": "Visit over 30 activity stations with environmentally-themed art, science, engineering, dance and music performances.",
-				"image": "img/Expo-Postcard-1.jpg"
+				"image": "GSS_Workshop.png",
+				"link": "http://gowanusstudio.org/free-letterpress-workshop/",
     },
     "geometry": {
         "type": "Point",
-        "coordinates": [-73.986068,40.680492]
+        "coordinates": [-73.991028,40.673249]
     }
-};
+	},{
+	    "type": "Feature",
+	    "properties": {
+	        "organizer": "Gowanus Canal Conservancy",
+					"date": "May 19",
+	        "name": "Expo Gowanus",
+					"popupText": "Visit over 30 activity stations with environmentally-themed art, science, engineering, dance and music performances.",
+					"image": "GCC_Expo.png",
+					"link": "https://gowanuscanalconservancy.org/expo-gowanus/",
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-73.986068,40.680492]
+	    }
+		},{
+		    "type": "Feature",
+		    "properties": {
+		        "organizer": "Community Board 6",
+						"date": "April 26",
+		        "name": "Landmarks & Land Use Committee Meeting",
+						"popupText": "Visit our website for agenda items for the Landmarks & Land Use Committee Meeting.",
+						"image": "CB6_meeting.png",
+						"link": "https://www1.nyc.gov/site/brooklyncb6/calendar/calendar.page",
+		    },
+		    "geometry": {
+		        "type": "Point",
+		        "coordinates": [-73.994277,40.686243]
+		    }
+			},{
+			    "type": "Feature",
+			    "properties": {
+			        "organizer": "Arts Gowanus",
+							"date": "MAY 10",
+			        "name": "ArtWorks: A Benefit for Arts Gowanus",
+							"popupText": "An evening of drinks and local eats showcasing 75 Gowanus artists. Get your tickets soon!",
+							"image": "ArtsGowanus_ArtWorks.jpg",
+							"link": "https://www.artsgowanus.org/",
+			    },
+			    "geometry": {
+			        "type": "Point",
+			        "coordinates": [-73.985718,40.676449]
+			    }
+				},
+
+];
 
 
 
